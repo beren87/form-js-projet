@@ -51,6 +51,16 @@
     return !(POSAT < 1 || (POSDOT - POSAT < 2));
   }
 
+  // Validation Code postal
+  function validatePostCode(input){
+    return input.value.match("^(0[1-9]|[1-9][0-9])[0-9][0-9][0-9]$");
+  }
+
+  // Validation adresse
+  function validateAddress(input){
+    return input.value.match(/^\s*\S+(?:\s+\S+){2}/);
+  }
+
   function validateFields(input) {
     let fieldName = input.name;
     // Validaton de l'input PRENOM
@@ -68,6 +78,18 @@
         return false;
       }
       return (true);
+    }
+    if(fieldName == "postCode"){
+      if(!validatePostCode(input)){
+        return false;
+      }
+      return (true);
+    }
+    if(fieldName == "address"){
+      if(!validateAddress(input)){
+        return false;
+      }
+      return(true);
     }
 }
     //=============== END - DECLARATION DU FORMULAIRE ===============//
