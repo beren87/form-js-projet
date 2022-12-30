@@ -61,6 +61,11 @@
     return input.value.match(/^\s*\S+(?:\s+\S+){2}/);
   }
 
+  // Validation du Numéro téléphone
+  function validatePhoneNumber(input){
+    return input.value.match(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/);
+  }
+
    // Validation d'un checkbox
   function validateTerms(input) {
     return input.checked;
