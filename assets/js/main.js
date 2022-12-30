@@ -61,6 +61,12 @@
     return input.value.match(/^\s*\S+(?:\s+\S+){2}/);
   }
 
+   // Validation d'un checkbox
+  function validateTerms(input) {
+    return input.checked;
+}
+
+
   function validateFields(input) {
     let fieldName = input.name;
     // Validaton de l'input PRENOM
@@ -93,4 +99,123 @@
     }
 }
     //=============== END - DECLARATION DU FORMULAIRE ===============//
+
+    
+    //=============== START - VALIDATION DES CHAMPS DU FORMULAIRE ===============//
+
+    function validateFields(input) {
+
+        let fieldName = input.name;
+
+        // Validaton de l'input PRENOM
+        if (fieldName == "firstName") {
+            if (!validateRequired(input)) {
+                return false;
+            }
+
+            if (!validateLength(input, 2, 20)) {
+                return false;
+            }
+
+            if (!validateText(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+
+        // Validaton de l'input NOM
+        if (fieldName == "lastName") {
+            if (!validateRequired(input)) {
+                return false;
+            }
+
+            if (!validateLength(input, 2, 20)) {
+                return false;
+            }
+
+            if (!validateText(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+
+        // Validaton de l'input EMAIL
+        if (fieldName == "email") {
+
+            if (!validateRequired(input)) {
+                return false;
+            }
+
+            if (!validateEmail(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+
+        // Validaton de l'input NUMERO DE TELEPHONE
+        if (fieldName == "phoneNumber") {
+            if (!validateRequired(input)) {
+                return false;
+            }
+
+            if (!validatePhoneNumber(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+
+        // Validaton de l'input ADRESSE
+        if (fieldName == "address") {
+
+            if (!validateRequired(input)) {
+                return false;
+            }
+
+            if (!validateAddress(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+
+        // Validaton de l'input VILLE
+        if (fieldName == "city") {
+            if (!validateRequired(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+
+        // Validaton de l'input CODE POSTAL
+        if (fieldName == "postCode") {
+
+            if (!validateRequired(input)) {
+                return false;
+            }
+
+            if (!validatePostCode(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+
+        // Validaton de la checkbox CONDTIONS
+        if (fieldName == "conditions") {
+            if (!validateTerms(input)) {
+                return false;
+            }
+
+            return (true);
+        }
+    }
+
+    //=============== END - VALIDATION DES CHAMPS DU FORMULAIRE ===============//
+
+
 
