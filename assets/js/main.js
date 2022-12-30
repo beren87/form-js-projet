@@ -17,21 +17,24 @@
                         input.classList.remove("is-valid");
                         input.classList.add("is-invalid");
                         input.nextElementSibling.style.display = 'block';
-                    } 
-                    else {
-                      
+                      } 
+                      else {
+                        
                         input.nextElementSibling.style.display = 'none';
                         input.classList.remove("is-invalid");
                         input.classList.add("is-valid");
+                      }
                     }
-                }
-            });
-        }, false)
-    })()
+                  });
+                }, false)
+              })()
+  //=============== END - DECLARATION DU FORMULAIRE ===============//
 
-    // Validation d'un champ REQUIRED
-    function validateRequired(input) {
-      return !(input.value == null || input.value == "");
+  //=============== START - FONCTIONS DE VALIDATION ===============//
+  
+  // Validation d'un champ REQUIRED
+  function validateRequired(input) {
+    return !(input.value == null || input.value == "");
   }
   //validation du nombre de caractères : MIN & MAX
   function validateLength(input, minLength, maxLength){
@@ -47,42 +50,42 @@
     let EMAIL = input.value;
     let POSAT = EMAIL.indexOf("@");
     let POSDOT = EMAIL.lastIndexOf(".");
-
+    
     return !(POSAT < 1 || (POSDOT - POSAT < 2));
   }
-
+  
   // Validation Code postal
   function validatePostCode(input){
     return input.value.match("^(0[1-9]|[1-9][0-9])[0-9][0-9][0-9]$");
   }
-
+  
   // Validation adresse
   function validateAddress(input){
     return input.value.match(/^\s*\S+(?:\s+\S+){2}/);
   }
-
+  
   // Validation du Numéro téléphone
   function validatePhoneNumber(input){
     return input.value.match(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/);
   }
-
-   // Validation d'un checkbox
+  
+  // Validation d'un checkbox
   function validateTerms(input) {
     return input.checked;
-}
-
-
+  }
+  
+  
   function validateFields(input) {
     let fieldName = input.name;
     // Validaton de l'input PRENOM
     if (fieldName == "firstName") {
-        if (!validateRequired(input)) {
-            return false;
-        }
-        if (!validateLength(input, 2, 20)) {
-          return false;
-        }
-        return (true);
+      if (!validateRequired(input)) {
+        return false;
+      }
+      if (!validateLength(input, 2, 20)) {
+        return false;
+      }
+      return (true);
     }
     if (fieldName == "email"){
       if (!valideEmail(input)){
@@ -102,14 +105,14 @@
       }
       return(true);
     }
-}
-    //=============== END - DECLARATION DU FORMULAIRE ===============//
-
+  }
+  //=============== END - FONCTIONS DE VALIDATION ===============//
+  
+  
+  //=============== START - VALIDATION DES CHAMPS DU FORMULAIRE ===============//
+  
+  function validateFields(input) {
     
-    //=============== START - VALIDATION DES CHAMPS DU FORMULAIRE ===============//
-
-    function validateFields(input) {
-
         let fieldName = input.name;
 
         // Validaton de l'input PRENOM
